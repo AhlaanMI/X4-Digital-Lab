@@ -1,9 +1,10 @@
+// filepath: /c:/Users/HP/Desktop/X4/my-next-xampp/pages/index.js
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
-export async function getServerSideProps() {
+export async function getStaticProps() {
   try {
     const res = await fetch('http://localhost:3000/api/sales');
     if (!res.ok) {

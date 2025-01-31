@@ -1,3 +1,4 @@
+// filepath: /c:/Users/HP/Desktop/X4/my-next-xampp/prisma/schema.prisma
 generator client {
   provider = "prisma-client-js"
 }
