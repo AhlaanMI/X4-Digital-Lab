@@ -1,40 +1,85 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/pages/api-reference/create-next-app).
+# 🚀 Next.js Project with XAMPP & MySQL
 
-## Getting Started
+This is a **Next.js** project that connects to a **MySQL database** using **XAMPP**.
 
-First, run the development server:
+## 📌 Prerequisites
+Before running this project, ensure you have the following installed:
 
-```bash
+- [Node.js](https://nodejs.org/) (Latest LTS version recommended)
+- [XAMPP](https://www.apachefriends.org/) (For MySQL and Apache)
+
+## 🛠️ Setup Instructions
+
+### **1️⃣ Install & Start XAMPP**
+1. Download and install [XAMPP](https://www.apachefriends.org/).
+2. Open **XAMPP Control Panel**.
+3. Start the **Apache** and **MySQL** services.
+
+### **2️⃣ Create the Database**
+1. Open **phpMyAdmin** by visiting:  
+   👉 `http://localhost/phpmyadmin/`
+2. Click **New**, enter a database name (e.g., `my_next_app`), and click **Create**.
+3. Ensure **MySQL is running on port 3308** (you can check this in XAMPP settings).
+
+### **3️⃣ Clone the Repository & Install Dependencies**
+```sh
+git clone https://github.com/your-username/your-repo.git
+cd your-repo
+npm install
+
+### **4️⃣ Configure Database Connection**
+Create a .env file in the project root and add the following:
+
+env
+Copy
+Edit
+DATABASE_URL="mysql://root:@localhost:3308/my_next_app"
+root → Default MySQL username (change if needed).
+No password → Leave blank unless you've set one.
+3308 → Make sure MySQL is running on this port.
+
+5️⃣ Create the sales Table (SQL Query)
+If your project needs a sales table, execute the following SQL query in phpMyAdmin:
+
+sql
+Copy
+Edit
+CREATE TABLE sales (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    product VARCHAR(255) NOT NULL,
+    quantity INT NOT NULL,
+    price DECIMAL(10,2) NOT NULL,
+    sale_date DATE NOT NULL
+);
+
+To insert some initial data:
+
+sql
+Copy
+Edit
+INSERT INTO sales (product, quantity, price, sale_date) VALUES
+('Laptop', 5, 1200.50, '2024-01-10'),
+('Phone', 10, 700.00, '2024-01-11'),
+('Tablet', 7, 450.00, '2024-01-12');
+
+
+6️⃣ Run Database Migrations (If Using Prisma)
+If you're using Prisma ORM, apply migrations with:
+
+sh
+Copy
+Edit
+npx prisma migrate dev --name init
+This will create tables in your MySQL database.
+
+7️⃣ Start the Project
+sh
+Copy
+Edit
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+Now, open your browser and visit:
+👉 http://localhost:3000
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `pages/index.js`. The page auto-updates as you edit the file.
 
-[API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) can be accessed on [http://localhost:3000/api/hello](http://localhost:3000/api/hello). This endpoint can be edited in `pages/api/hello.js`.
 
-The `pages/api` directory is mapped to `/api/*`. Files in this directory are treated as [API routes](https://nextjs.org/docs/pages/building-your-application/routing/api-routes) instead of React pages.
-
-This project uses [`next/font`](https://nextjs.org/docs/pages/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn-pages-router) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/pages/building-your-application/deploying) for more details.
