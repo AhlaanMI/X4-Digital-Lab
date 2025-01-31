@@ -1,7 +1,7 @@
 // filepath: /c:/Users/HP/Desktop/X4/my-next-xampp/pages/index.js
 import { Bar } from 'react-chartjs-2';
 import { Chart as ChartJS, CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend } from 'chart.js';
-
+import styles from './Home.module.css';
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip, Legend);
 
 export async function getStaticProps() {
@@ -46,17 +46,19 @@ export default function Home({ sales }) {
     },
   };
 
+
+
   return (
     <div>
-      <h1>Sales List</h1>
-      <ul>
+      <h1 className={styles.title}>Sales List</h1>
+      <ul className={styles.list}>
         {sales.map((sale) => (
-          <li key={sale.id}>
-            {sale.product} - {sale.quantity} units - ${sale.price} - {new Date(sale.sale_date).toLocaleDateString()}
-          </li>
+          <li key={sale.id} className={styles.listItem}>
+            <span className={styles.product}>{sale.product}</span> - {sale.quantity} units - ${sale.price} - {new Date(sale.sale_date).toLocaleDateString()}
+            </li>
         ))}
       </ul>
-      <div style={{ width: '600px', height: '400px' }}>
+      <div style={{ marginTop: '20px', width: '600px', height: '400px' }}>
         <Bar data={data} options={options} />
       </div>
     </div>
