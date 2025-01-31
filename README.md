@@ -22,10 +22,10 @@ Before running this project, ensure you have the following installed:
 3. Ensure **MySQL is running on port 3308** (you can check this in XAMPP settings).
 
 ### **3️⃣ Clone the Repository & Install Dependencies**
-```sh
-git clone https://github.com/your-username/your-repo.git
+
+sh```git clone https://github.com/your-username/your-repo.git
 cd your-repo
-npm install
+npm install ```
 
 ### **4️⃣ Configure Database Connection**
 Create a .env file in the project root and add the following:
@@ -38,7 +38,7 @@ root → Default MySQL username (change if needed).
 No password → Leave blank unless you've set one.
 3308 → Make sure MySQL is running on this port.
 
-5️⃣ Create the sales Table (SQL Query)
+### **5️⃣ Create the sales Table (SQL Query)**
 If your project needs a sales table, execute the following SQL query in phpMyAdmin:
 
 sql
@@ -63,7 +63,7 @@ INSERT INTO sales (product, quantity, price, sale_date) VALUES
 ('Tablet', 7, 450.00, '2024-01-12');
 
 
-6️⃣ Run Database Migrations (If Using Prisma)
+### **6️⃣ Run Database Migrations (If Using Prisma)**
 If you're using Prisma ORM, apply migrations with:
 
 sh
@@ -72,8 +72,8 @@ Edit
 npx prisma migrate dev --name init
 This will create tables in your MySQL database.
 
-7️⃣ Start the Project
-sh
+### **7️⃣ Start the Project**
+```sh
 Copy
 Edit
 npm run dev
